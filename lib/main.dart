@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'tela_inicial.dart';
 
+
 void main() => runApp(CalculadoraIMC());
 
 class CalculadoraIMC extends StatelessWidget {
