@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:imccalculator/constantes.dart';
 
 class ConteudoIcone extends StatelessWidget {
   ConteudoIcone({required this.icone, required this.descricao});
@@ -20,7 +21,7 @@ class ConteudoIcone extends StatelessWidget {
         ),
         Text(
           descricao,
-          style: TextStyle(fontSize: 20.0, color: Colors.black),
+          style: kEstiloTexto,
         ),
       ],
     );
