@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+
 import 'package:imccalculator/constantes.dart';
 
-import 'conteudo_icone.dart';
-import 'conteudo_padrao.dart';
-import 'tela_resultados.dart';
+import '../componentes/conteudo_icone.dart';
+import '../componentes/conteudo_padrao.dart';
+import '../componentes/botao_inferior.dart';
+import '../componentes/botao_arredondado.dart';
+
+import '../telas/tela_resultados.dart';
+import 'package:imccalculator/calculadora_imc.dart';
 
 enum Sexo {
   masculino,
@@ -195,46 +200,26 @@ class _TelaPrincipalState extends State<TelaPrincipal> {
               )
             ],
           )),
-          GestureDetector(
-            onTap: (){
-              Navigator.push(context, MaterialPageRoute(builder: (context) => TelaResultados(), ), );
+          BotaoInferior(
+            tituloBotao: "CALCULAR",
+            aoPressionar: () {
+              Future.delayed(Duration.zero, () async {
+                CalculadoraIMC calc =
+                    CalculadoraIMC(altura: altura, peso: peso);
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => TelaResultados(
+                        resultadoIMC: calc.calcularIMC(),
+                        resultadoTexto: calc.obterResultado(),
+                        interpretacao: calc.obterInterpretacao()),
+                  ),
+                );
+              });
             },
-            child: Container(
-              child: Text("CALCULAR", style: kEstiloTexto,),
-              color: Color(0xFF8E57E9),
-              margin: EdgeInsets.only(top: 10.0),
-              width: double.infinity,
-              height: 30.0,
-            ),
-          )
+          ),
         ],
       ),
-    );
-  }
-}
-
-//Criação de um Action Button Personalizado
-class BotaoArredondado extends StatelessWidget {
-  BotaoArredondado({required this.icone, required this.aoPressionar});
-
-  final IconData? icone;
-  final Function() aoPressionar;
-
-  @override
-  Widget build(BuildContext context) {
-    return RawMaterialButton(
-      child: Icon(
-        icone,
-        color: Colors.purple,
-      ),
-      onPressed: aoPressionar,
-      elevation: 6.0,
-      constraints: const BoxConstraints.tightFor(
-        width: 56.0,
-        height: 56.0,
-      ),
-      shape: CircleBorder(),
-      fillColor: Colors.red,
     );
   }
 }

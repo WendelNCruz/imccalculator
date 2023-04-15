@@ -12,3 +12,21 @@ const kEstiloNumero = TextStyle(
   fontWeight: FontWeight.w900,
   color: Colors.black,
 );
+
+const kEstiloBotao = TextStyle(
+  fontSize:  25.0,
+  color: Colors.black,
+  fontWeight: FontWeight.bold,
+);
+
+const kEstiloTextoResultado = TextStyle(
+  fontSize: 30.0,
+  color: Colors.black,
+  fontWeight: FontWeight.bold,
+);
+
+const kEstiloResultado = TextStyle(
+  fontSize: 100.0,
+  color: Colors.black,
+  fontWeight: FontWeight.bold,
+);
